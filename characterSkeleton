@@ -90,7 +90,6 @@ let horizontalLimbs = shape( () => {
   rotateY(PI/2);
   verticalLimbs();
 });
-
 let verticalAvi = shape( () => {
   verticalHeadAndNeck();
   verticalClothing();
