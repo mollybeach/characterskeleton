@@ -1,10 +1,15 @@
+let standard = vec3(1.0, 1.0, 1.0);
+let size = 0.5;
 //***********************************************************standardAnimation
 //****************************************************************headAndNeck
-let animation = shape( () => {
-  displace(0.0, -0.33, -0.20);
-let headAndNeckVertical = shape( () => {
+let avi = shape( () => {
+  let headAndNeckVertical = shape( () => {
   color(standard);
-  let head = shape( () => {
+  displace(0.0*size, 0.5*size, 0.2*size);
+let head = shape( () => {
+  color(standard);
+  displace(0.0*size, 0.0*size, 0.00*size);
+  sphere(0.39*size);
 });
 let neck = shape( () => {
   rotateX(PI/-.55);
@@ -15,8 +20,8 @@ let neck = shape( () => {
   displace(0.0*size, -0.55*size, 0.33*size);
   torus(.049*size, 0.180*size);
 });
-//head();
-//neck();
+head();
+neck();
 });
 let headAndNeckHorizontal = shape(() => {
   displace(-0.0*size, 0.02*size, 0.45*size);
@@ -24,30 +29,23 @@ let headAndNeckHorizontal = shape(() => {
   rotateX(PI/7.38);
   headAndNeckVertical();
 });
-headAndNeckVertical();
-headAndNeckHorizontal();
-//**************************************************************facialFeatures
 let facialFeaturesVertical = shape( () => {
-let facialFeatures = shape( () => {
-});
- //combine facial features to animate simultaneously
-//mouth();
+ //mouth();
 });
 let facialFeaturesHorizontal = shape( () => {
   displace(0.0*size, 0.02*size, 0.45*size);
   facialFeaturesVertical();
 });
 //********************************************************************clothing
-let clothing = shape( () => {
 let clothingVertical = shape( () => {
 });
-  let horizontalClothing = shape( () => {
+  let clothingHorizontal = shape( () => {
   displace(0.0*size, 0.0*size, 0.2*size);
-   verticalClothing()
+   verticalClothing();
 });
 //************************************************************************body
 let torsoVertical = shape(() => {
-  color(colorChange);
+  color(standard);
   displace(0.0,-0.09*size, 0.2*size);
   box(0.05*size,0.1*size,0.01*size);
   expand(0.349*size);
@@ -56,23 +54,22 @@ let torsoHorizontal = shape(() => {
   displace(-0.2*size, -0.109*size, 0.4*size);
   rotateZ(PI/2);
   rotateX(PI/2);
-  verticalTorso();
+  torsoVertical();
   expand(0.02*size);
 });
-let limbs = shape( () => {
-  let verticalLimbs = shape( () => {
-  let arms = shape( () => {
-  color(standrd);
+let verticalLimbs = shape( () => {
+let arms = shape( () => {
+  color(standard);
   rotateZ(PI/1);
   displace(-0.253*size, 0.52*size,0.25*size);
   rotateZ(PI/2);
   blend(0.1352*size);
   torus(0.06*size, 0.09*size);
   displace(-0.0441*size,-0.0,0.15*size);
-  box(size*0.011-sd.w*0.01*size, size*0.081-sd.w*0.01*size, size*0.08-sd.w*0.1*size);
+  box(size*0.011*0.01*size, size*0.081*0.01*size, size*0.08*0.1*size);
   blend(0.252*size);
   displace(0.0241*size,0.0,0.1035*size);
-  sphere(size*0.0311-sd.w*0.01*size);
+  sphere(size*0.0311*0.01*size);
   });
 let legs = shape( () => {
   displace(0.0, 0.2*size, 0.0);
@@ -91,23 +88,22 @@ let horizontalLimbs = shape( () => {
   verticalLimbs();
 });
 let verticalAvi = shape( () => {
-  verticalHeadAndNeck();
-  verticalClothing();
-  verticalTorso();
+  headAndNeckVertical();
+  //clothingVertical();
+  mirrorX();
+  torsoVertical();
   verticalLimbs();
+  //facialFeaturesHorizontal();
 });
 let horizontalAvi = shape( () => {
-  verticalHeadAndNeck();
-  verticalClothing();
-  verticalTorso();
+  headAndNeckHorizontal();
+  //clothingHorizontal();
+  torsoHorizontal();
   mirrorX();
-  verticalLimbs();
-  verticalFacialFeatures();
+  horizontalLimbs();
+  //facialFeaturesHorizontal();
 });
-let avi = shape( () => {
-verticalAvi();
-//horizontalAvi();
+ //verticalAvi();
+ horizontalAvi();
 });
 avi();
-});
-animation();
