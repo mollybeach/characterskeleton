@@ -90,10 +90,10 @@ let horizontalLimbs = shape( () => {
 let verticalAvi = shape( () => {
   headAndNeckVertical();
   //clothingVertical();
-  mirrorX();
   torsoVertical();
+  mirrorX();
   verticalLimbs();
-  //facialFeaturesHorizontal();
+  //facialFeaturesVertical();
 });
 let horizontalAvi = shape( () => {
   headAndNeckHorizontal();
@@ -101,7 +101,7 @@ let horizontalAvi = shape( () => {
   torsoHorizontal();
   mirrorX();
   horizontalLimbs();
-  //facialFeaturesHorizontal();
+  facialFeaturesHorizontal();
 });
  //verticalAvi();
  horizontalAvi();
